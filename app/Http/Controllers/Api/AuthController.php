@@ -75,10 +75,11 @@ class AuthController extends Controller
     public function show($id)
     {
         try {
-            $user = User::findOrFail($id)->delete();
+            $user = User::findOrFail($id);
             return response()->json([
                 'success'=>true,
                 'message'=>'Display the specified resource',
+                'data'=>$user
              ]);
         } catch (\Throwable $th) {
             return response()->json([
